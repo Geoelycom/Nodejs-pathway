@@ -1,0 +1,19 @@
+{
+  "name": "hackedpassword",
+  "version": "1.0.0",
+  "description": "exploring haxkedcheck",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Elyan",
+  "license": "ISC",
+  "dependencies": {
+    "alert": "^5.1.1",
+    "axios": "^0.27.2",
+    "node-fetch": "^3.2.6",
+    "nodemon": "^2.0.18"
+  }
+}
