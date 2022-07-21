@@ -1,4 +1,5 @@
 // Get friend with Id
+
 const model = require('../Models/friends.model');
 function postFriend(req, res) {
   if (!req.body.name){
@@ -18,6 +19,8 @@ res.json(newFriend)
 function getFriends(req, res) {
   res.json(model)
   }
+
+ 
 
  // exmple would be www.webme.com/friends/12
 //{:/12} == params
