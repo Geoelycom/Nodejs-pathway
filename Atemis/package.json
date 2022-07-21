@@ -1,0 +1,11 @@
+{
+  "name": "atemis",
+  "version": "1.0.0",
+  "description": "A node js full stack application on Nasa's space exploration",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elyan",
+  "license": "ISC"
+}
