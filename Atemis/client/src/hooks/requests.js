@@ -1,4 +1,3 @@
-// TODO: Once API is ready.
 // Load planets and return as JSON.
 const API_url = "http://localhost:8000";
 async function httpGetPlanets() {
@@ -6,15 +5,33 @@ async function httpGetPlanets() {
   return await response.json();
 }
 
+// Load launches, sort by flight number, and return as JSON.
 async function httpGetLaunches() {
-  // TODO: Once API is ready.
-  // Load launches, sort by flight number, and return as JSON.
-  
+  const response = await fetch(`${API_url}/launches`);
+  const fetchedLaunches = await response.json();
+  return fetchedLaunches.sort((a, b) => {
+    return a.flightNumber - b.flightNumber;
+  })
 }
 
+// Submit given launch data to launch system.
+// quick note.. the fecth fucntion in js defaults to a get request, to make a post requst, we add the option object.
 async function httpSubmitLaunch(launch) {
-  // TODO: Once API is ready.
-  // Submit given launch data to launch system.
+  try {
+    return await fetch(`${API_url}/launches`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(launch),
+  
+    })
+  } catch (error) {
+    return {
+      ok: false,
+    }
+  }
+  
 }
 
 async function httpAbortLaunch(id) {
@@ -22,4 +39,4 @@ async function httpAbortLaunch(id) {
   // Delete launch with given ID.
 }
 
-export { httpGetPlanets, httpGetLaunches, httpSubmitLaunch, httpAbortLaunch };
+export { httpGetPlanets,httpGetLaunches,httpSubmitLaunch,httpAbortLaunch };
