@@ -10,7 +10,7 @@ function httpGetAllLaunches(req, res) {
 
 function httpAddNewLaunch(req, res) {
   const launch = req.body;
-  if (!launch.mission || !launch.launchDate || !launch.destination || !launch.rocket) {
+  if (!launch.mission || !launch.launchDate || !launch.target || !launch.rocket) {
     return res.status(400).json({
       error: 'Missing required launch property',
     })

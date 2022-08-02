@@ -6,7 +6,7 @@ const launch = {
   mission: "Kepler Exploration X",
   rockect: "Explorer ISI",
   launchDate: new Date("November 23, 2022"),
-  destination: "kepler-442 b",
+  target: "kepler-442 b",
   customer: ["Nasa", "spaceX"],
   upcoming: true,
   success: true,
