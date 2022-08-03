@@ -24,6 +24,13 @@ describe("Test Post /launches", () => {
     target: "Kepler-186 f",
   };
 
+  const launchDataWithInvalidDate = {
+    mission: "Zero SSH Enterprise",
+    rocket: "Zero SSH-12UI",
+    target: "Kepler-186 f",
+    launchDate: "atsgragagreff",
+  };
+
   test("it should respond with status code 201 created", async () => {
     const response = await request(app)
       .post("/launches")
@@ -37,6 +44,26 @@ describe("Test Post /launches", () => {
 
     expect(response.body).toMatchObject(launchDataWithoutDate);
   });
-  test("it should catch  missing required properties", () => {});
-  test("it should catch invalid date", () => {});
+  test("it should catch  missing required properties", async () => {
+    const response = await request(app)
+      .post("/launches")
+      .send(launchDataWithoutDate)
+      .expect("Content-Type", /json/)
+      .expect(400);
+
+    expect(response.body).toStrictEqual({
+      error: "Missing required launch property",
+    });
+  });
+  test("it should catch invalid date", async () => {
+    const response = await request(app)
+      .post("/launches")
+      .send(launchDataWithInvalidDate)
+      .expect("Content-Type", /json/)
+      .expect(400);
+
+    expect(response.body).toStrictEqual({
+      error: "Invalid launch date",
+    });
+  });
 });
